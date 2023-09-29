@@ -66,32 +66,30 @@ const addBook = async () => {
 <template>
   <div class="form-container">
     <form class="form-example">
-      <!-- Your form fields here -->
-
       <div class="form-group">
-        <label for="firstName">First Name:</label>
+        <label for="firstName" class="form-label">First Name:</label>
         <input type="text" v-model="firstName" required class="form-control" />
       </div>
       <div class="form-group">
-        <label for="lastName">Last Name:</label>
+        <label for="lastName" class="form-label">Last Name:</label>
         <input type="text" v-model="lastName" required class="form-control" />
       </div>
       <div class="form-group">
-        <label for="bookTitle">Title:</label>
+        <label for="bookTitle" class="form-label">Title:</label>
         <input type="text" v-model="title" required class="form-control" />
       </div>
       <div class="form-group">
-        <label for="bookYear">Year:</label>
+        <label for="bookYear" class="form-label">Year:</label>
         <input type="text" v-model="publicationYear" required class="form-control" />
       </div>
       <div class="form-group">
-        <label for="bookGenre">Genre:</label>
+        <label for="bookGenre" class="form-label">Genre:</label>
         <input type="text" v-model="genre" required class="form-control" />
       </div>
     </form>
 
     <div class="form-group">
-      <label for="photo">Choose a photo:</label>
+      <label for="photo" class="form-label">Choose a photo:</label>
       <input type="file" id="photo" name="photo" accept="image/*" class="form-control-file" />
     </div>
 
@@ -100,61 +98,61 @@ const addBook = async () => {
 </template>
 
 <style scoped>
-/* Custom styles */
 .form-container {
-  max-width: 400px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-.form-example {
+  max-width: 400px;
+  margin: 0 auto;
   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 100%; /* Ensure the form doesn't exceed the container's width */
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 5px;
+.form-label {
   font-weight: bold;
-  color: #333;
 }
 
 .form-control {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .form-control-file {
-  font-size: 16px;
+  display: none;
 }
 
 .btn-primary {
-  background-color: #0066CC;
+  background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 20px;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .btn-primary:hover {
-  background-color: #0055aa;
+  background-color: #0056b3;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
 }
 </style>

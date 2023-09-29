@@ -21,6 +21,32 @@ onBeforeMount(async () => {
     router.push({name:'Description',
   params:{id:authorID}
   })  }
+  const showSuccessPopup = ref(false);
+
+// Function to open the popup
+const showSuccessNotification = () => {
+  showSuccessPopup.value = true;
+};
+
+// Function to close the popup
+const closePopup = () => {
+  showSuccessPopup.value = false;
+};
+onBeforeMount(async () => {
+  try {
+    const response = await axios.get(API);
+    if (response.status === 200) {
+      characters.value = response.data;
+      // Assuming the book is added successfully, show the popup
+      showSuccessNotification();
+    } else {
+      console.error('Oops');
+    }
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+});
+
 </script>
 
 <template>
@@ -46,6 +72,12 @@ onBeforeMount(async () => {
       </div>
     </div>
   </section>
+  <div v-if="showSuccessPopup" class="popup">
+    <div class="popup-content">
+      <p>Book added successfully!</p>
+      <button class="close-button" @click="closePopup">Close</button>
+    </div>
+  </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
@@ -125,5 +157,31 @@ onBeforeMount(async () => {
   opacity: 0.5; /* Adjust opacity to your preference */
   pointer-events: none; /* Make the background non-clickable */
 }
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 999;
+    display: none;
+  }
+
+  .popup-content {
+    text-align: center;
+  }
+
+  .close-button {
+    background-color: #0066CC;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
 </style>
 

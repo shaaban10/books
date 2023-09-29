@@ -36,7 +36,7 @@ onBeforeMount(async () => {
       </ul>
     </div>
     <div class="choose-another">
-      <h3>Choose Another Character</h3>
+      <h3>Choose Another Book</h3>
       <router-link to="/bookslist" class="btn btn-outline-dark">Press Here</router-link>
     </div>
   </div>
